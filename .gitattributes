@@ -1,0 +1,3 @@
+.pth filter=lfs diff=lfs merge=lfs -text
+kolossus/models/new_ft_v3_humansty.pth filter=lfs diff=lfs merge=lfs -text
+kolossus/models/saved_model_cs_ws_ft_humansty.epoch_59.pth filter=lfs diff=lfs merge=lfs -text

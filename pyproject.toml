@@ -1,0 +1,42 @@
+[project]
+name = "kolossus"
+dependencies = [
+    "setuptools",
+    "numpy", #< 1.24",
+    "scikit-learn", #< 1.2",
+    "PyYaml", #< 6.1"
+    "torch",
+    "biopython",
+    "h5py",
+    "transformers",
+    "fair-esm"
+]
+authors = [
+  { name="Aditya Parekh", email="aditya.parekh@duke.edu" },
+  { name="Kanchan Jha", email="kanchan.jha@duke.edu" }
+]
+description = "Predict kinase-substrate interactions."
+readme = "README.md"
+dynamic = ["version"]
+#requires-python = ">=3.9,<3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.scripts]
+kolossus-cli = "kolossus.main:main"
+kolossus-extract = "kolossus.extract:main"
+kolossus-panel = "kolossus.panel:main"
+
+[project.urls]
+"Homepage" = "https://github.com/rohitsinghlab/p_KolossuS"
+"Bug Tracker" = "https://github.com/rohitsinghlab/p_KolossuS/issues"
+
+[tool.setuptools.packages.find]
+where = ["."]
+exclude = ["*test*"]
+
+[tool.setuptools.dynamic]
+version = { attr = "kolossus.__version__" }
