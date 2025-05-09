@@ -8,11 +8,13 @@ import sys
 
 
 MODEL_FILE = 'saved_model_cs_ws_ft_humansty.epoch_59.pth'
+FILE_PATH = os.path.join(os.path.split(__file__)[0], MODEL_FILE)
+FILE_HUGGINGFACE_URL = 'https://huggingface.co/aparekh2/kolossus/resolve/main/saved_model_cs_ws_ft_humansty.epoch_59.pth'
+
 
 if not os.path.isfile(os.path.join(os.path.split(__file__)[0], MODEL_FILE)):
-    print(f"Error: please save file {MODEL_FILE} to", os.path.split(__file__)[0], 
-        "sorry, very bad programming practice, will be fixed later", file=sys.stderr)
-    sys.exit(1)
+    print(f"Downloading model from {FILE_HUGGINGFACE_URL} to {FILE_PATH}.")
+    torch.hub.download_url_to_file(FILE_HUGGINGFACE_URL, FILE_PATH)
 
 
 def load_model():
