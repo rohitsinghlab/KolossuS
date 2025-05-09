@@ -17,48 +17,6 @@ kinase signaling in health and disease.
 ## Preprint
 **Jha K., Shonai D., Parekh A., Uezu A., Fujiyama T., Yamamoto H., Parameswaran P., Yanagisawa M., Singh R., Soderling S. (2025). Deep Learning-coupled Proximity Proteomics to Deconvolve Kinase Signaling In Vivo. bioRxiv, 2025-04. [bioRxiv preprint](https://www.biorxiv.org/content/10.1101/2025.04.27.650849v1)**
 
-
-Main function for usage is `kolossus`. Function works as follows: 
-
-```
-Input:
-  - fasta file of all sequences (or .h5 file of embeddings)
-  - pair file of format '<kinase_id>\t<substrate_id>\t<substrate_phosphorylation_site>'
-
-Output:
-  - pairs (kinase_id, substrate_id, substrate_phosphorylation_site, predicted_probability)
-```
-
-Over here, `<substrate_phosphorylation_site>` is the offset of the phosphorylated residue. 
-So for example, if the substrate has sequence 'GGRGSDD', and the serine (5th amino acid)
-is the phosphorylated residue, then `substrate_phosphorylation_site=5`.
-
-Note that the fasta file should contain **all** of the sequences (including the full substrate sequences). 
-We'll get the appropriate windows from the pairs file. 
-
-Usage:
-
-``` python
-## on the command line
-kinase_file="kinases.fasta"
-substrate_file="substrates.fasta"
-
-cat $kinase_file $substrate_file > seqs.fasta
-
-## in python
-from kolossus import kolossus
-
-# define inputs to function
-seqs_file = 'seqs.fasta' 
-pairs_file = 'pairs_with_phosphorylation_sites.txt'
-
-# returns a dictionary (kinase, substrate, site): probability
-pairs_and_probs = kolossus(pairs_file, fseqs=seqs_file, device='cpu')
-
-# to get kolossus embeddings: use the return_projections parameter
-pairs_and_probs, projections = kolossus(pairs_file, fseqs=seqs_file, device='cpu', return_projections=True)
-```
-
 There is also a command-line interface which can be called on the terminal: `kolossus-cli`.
 
 ```
@@ -81,7 +39,10 @@ optional arguments:
                         desired file path for output
 ```
 
-To get esm embeddings, you can use the `kolossus-extract` command. 
+Note that the fasta file should contain **all** of the sequences (including the full substrate sequences). 
+We'll get the appropriate windows from the pairs file. 
+
+To get the ESM-2 embeddings for your protein sequences, you can use the `kolossus-extract` command. 
 
 ```
 usage: kolossus-extract [-h] -i I [--model MODEL] [--device DEVICE] -o O
@@ -89,7 +50,45 @@ usage: kolossus-extract [-h] -i I [--model MODEL] [--device DEVICE] -o O
 optional arguments:
   -h, --help       show this help message and exit
   -i I             name of input fasta file
-  --model MODEL    name of model to extract embeddings
+  --model MODEL    name of the ESM-2 model for which you want embeddings: `esm2_t48_15B_UR50D` or `esm2_t33_650M_UR50D`
   --device DEVICE  cpu or gpu device to use
   -o O             name of output .h5 file
+```
+
+There is also a python interface for using `KolossuS` within kolossus scripts. Main function for usage is `kolossus`. Function works as follows: 
+
+.```
+Input:
+  - fasta file of all sequences (or .h5 file of embeddings)
+  - pair file of format '<kinase_id>\t<substrate_id>\t<substrate_phosphorylation_site>'
+
+Output:
+  - pairs (kinase_id, substrate_id, substrate_phosphorylation_site, predicted_probability)
+```
+
+Over here, `<substrate_phosphorylation_site>` is the offset of the phosphorylated residue. 
+So for example, if the substrate has sequence 'GGRGSDD', and the serine (5th amino acid)
+is the phosphorylated residue, then `substrate_phosphorylation_site=5`.
+
+Usage:
+
+``` python
+## on the command line
+kinase_file="kinases.fasta"
+substrate_file="substrates.fasta"
+
+cat $kinase_file $substrate_file > seqs.fasta
+
+## in python
+from kolossus import kolossus
+
+# define inputs to function
+seqs_file = 'seqs.fasta' 
+pairs_file = 'pairs_with_phosphorylation_sites.txt'
+
+# returns a dictionary (kinase, substrate, site): probability
+pairs_and_probs = kolossus(pairs_file, fseqs=seqs_file, device='cpu')
+
+# to get kolossus embeddings: use the return_projections parameter
+pairs_and_probs, projections = kolossus(pairs_file, fseqs=seqs_file, device='cpu', return_projections=True)
 ```
