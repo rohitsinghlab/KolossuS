@@ -1,4 +1,4 @@
-# KolossuS: Deep Learning-coupled Proximity Proteomics to Deconvolve Kinase Signaling In Vivo
+# KolossuS: Kinase Signaling Prediction Tool
 
 Deconvolving the substrates of hundreds of kinases linked to phosphorylation networks driving
 cellular behavior is a fundamental, unresolved biological challenge, largely due to the poorly
@@ -15,7 +15,9 @@ kinase signaling in health and disease.
 
 
 ## Preprint
-Jha K., Shonai D., Parekh A., Uezu A., Fujiyama T., Yamamoto H., Parameswaran P., Yanagisawa M., Singh R., Soderling S. (2025). Deep Learning-coupled Proximity Proteomics to Deconvolve Kinase Signaling In Vivo. bioRxiv, 2025-04. [bioRxiv preprint](https://www.biorxiv.org/content/10.1101/2025.04.27.650849v1) 
+**Jha K., Shonai D., Parekh A., Uezu A., Fujiyama T., Yamamoto H., Parameswaran P., Yanagisawa M., Singh R., Soderling S. (2025). Deep Learning-coupled Proximity Proteomics to Deconvolve Kinase Signaling In Vivo. bioRxiv, 2025-04. [bioRxiv preprint](https://www.biorxiv.org/content/10.1101/2025.04.27.650849v1)**
+
+
 Main function you would use is `kolossus`. Function works as follows: 
 
 ```
