@@ -50,14 +50,28 @@ usage: kolossus-extract [-h] -i I [--model MODEL] [--device DEVICE] -o O
 optional arguments:
   -h, --help       show this help message and exit
   -i I             name of input fasta file
-  --model MODEL    name of the ESM-2 model for which you want embeddings: `esm2_t48_15B_UR50D` or `esm2_t33_650M_UR50D`
+  --model MODEL    name of the ESM-2 model for which you want embeddings: esm2_t48_15B_UR50D or esm2_t33_650M_UR50D
   --device DEVICE  cpu or gpu device to use
   -o O             name of output .h5 file
 ```
 
+The `pairs` file should be formatted like so:
+
+```
+kinase_1  subsrate_1  substrate_1_phosphorylation_site_1
+kinase_1  substrate_1  substrate_1_phosphorylation_site_2
+kinase_2  subsrate_2  substrate_2_phosphorylation_site_1
+...
+```
+
+Here, `<substrate_x_phosphorylation_site_y>` is the offset of the phosphorylated residue. 
+So for example, if the substrate has sequence 'GGRGSDD', and the serine (5th amino acid)
+is the phosphorylated residue, then `substrate_phosphorylation_site=5`.
+
+
 There is also a python interface for using `KolossuS` within kolossus scripts. Main function for usage is `kolossus`. Function works as follows: 
 
-.```
+```
 Input:
   - fasta file of all sequences (or .h5 file of embeddings)
   - pair file of format '<kinase_id>\t<substrate_id>\t<substrate_phosphorylation_site>'
@@ -65,10 +79,6 @@ Input:
 Output:
   - pairs (kinase_id, substrate_id, substrate_phosphorylation_site, predicted_probability)
 ```
-
-Over here, `<substrate_phosphorylation_site>` is the offset of the phosphorylated residue. 
-So for example, if the substrate has sequence 'GGRGSDD', and the serine (5th amino acid)
-is the phosphorylated residue, then `substrate_phosphorylation_site=5`.
 
 Usage:
 
