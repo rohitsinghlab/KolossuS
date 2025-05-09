@@ -1,0 +1,11 @@
+#lines starting with '#' are ignored
+#kinase_id	substrate_id	phosphorylation_site
+kin4	sub4	1
+kin9	sub9	1
+kin6	sub6	2
+kin1	sub1	1
+kin2	sub2	0
+kin7	sub7	2
+kin8	sub8	2
+kin5	sub5	1
+kin3	sub3	1
