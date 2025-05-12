@@ -18,8 +18,6 @@ kinase signaling in health and disease.
 **Jha K., Shonai D., Parekh A., Uezu A., Fujiyama T., Yamamoto H., Parameswaran P., Yanagisawa M., Singh R., Soderling S. (2025). Deep Learning-coupled Proximity Proteomics to Deconvolve Kinase Signaling In Vivo. bioRxiv, 2025-04. [bioRxiv preprint](https://www.biorxiv.org/content/10.1101/2025.04.27.650849v1)**
 
 ## Installation
-You can install using `pip`:
-
 ```
 pip install kolossus
 ```
