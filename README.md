@@ -20,9 +20,9 @@ kinase signaling in health and disease.
 
 ## Environment installation
 ```
-micromamba create -n kolossus python=3.9 -c conda-forge -c pytorch -c nvidia
+micromamba create -n kolossus python=3.9 -c conda-forge 
 micromamba activate kolossus
-pip install .
+pip install --no-cache-dir -e .
 ```
 
 There is also a command-line interface which can be called on the terminal: `kolossus-cli`.
