@@ -18,14 +18,13 @@ kinase signaling in health and disease.
 **Jha K., Shonai D., Parekh A., Uezu A., Fujiyama T., Yamamoto H., Parameswaran P., Yanagisawa M., Singh R., Soderling S. (2025). Deep Learning-coupled Proximity Proteomics to Deconvolve Kinase Signaling In Vivo. bioRxiv, 2025-04. [bioRxiv preprint](https://www.biorxiv.org/content/10.1101/2025.04.27.650849v1)**
 
 
-## Environment installation
+## Installation
 ```
-micromamba create -n kolossus python=3.9 -c conda-forge 
-micromamba activate kolossus
-pip install --no-cache-dir -e .
+pip install kolossus
 ```
 
-There is also a command-line interface which can be called on the terminal: `kolossus-cli`.
+## Usage 
+Run `KolossuS` on the command line using `kolossus-cli`:
 
 ```
 usage: kolossus-cli [-h] --pairs PAIRS [--seqs SEQS] [--embeddings EMBEDDINGS] [--dtype DTYPE] [--projections PROJECTIONS]
